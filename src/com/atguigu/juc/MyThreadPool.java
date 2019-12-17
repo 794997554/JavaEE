@@ -11,7 +11,7 @@ public class MyThreadPool {
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<Runnable>(3),
                 Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.DiscardPolicy());
+                new ThreadPoolExecutor.AbortPolicy());
 
         for (int i = 1; i <= 12; i++) {
             int tempI = i;
