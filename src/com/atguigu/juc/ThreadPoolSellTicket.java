@@ -11,12 +11,15 @@ public class ThreadPoolSellTicket {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
         ExecutorService threadPool2 = Executors.newSingleThreadExecutor();
         ExecutorService threadPool3 = Executors.newCachedThreadPool();
-        for (int i = 1; i <= 35; i++) {
-            threadPool.execute(() -> {
-                ticket.sellTicket();
-            });
+        try {
+            for (int i = 1; i <= 35; i++) {
+                threadPool.execute(() -> {
+                    ticket.sellTicket();
+                });
+            }
+        } finally {
+            threadPool.shutdown();
         }
-        threadPool.shutdown();
     }
 }
 
